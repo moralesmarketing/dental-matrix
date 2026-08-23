@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     "Family, cosmetic, restorative, and whole-body wellness dentistry from Dr. Quinn Yu, DDS in Chino Hills, CA.",
 };
 
+const BOOKING_URL =
+  "https://www.patientviewer.com/WebSched/25_3_44/GWT/WebSched/WebSched.html?V=32355F335F3434&I=31302E31302E31312E313638&P=3530303039&R=3130303030&S=3130303030&T=3930303030&N=3439343938&K=3135333739&C=6538&UP=1&CID=30&RSC=406";
+
 const EXTRA_SERVICES = [
   {
     group: "Whole-Body Wellness",
@@ -101,12 +104,14 @@ export default function ServicesIndex() {
               >
                 Call (909) 525-2525
               </a>
-              <Link
-                href="/#contact"
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-semibold text-white underline underline-offset-4"
               >
                 Book online
-              </Link>
+              </a>
             </div>
           </div>
         </section>

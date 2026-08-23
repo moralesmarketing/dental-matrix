@@ -13,6 +13,8 @@ const EXTRA_SERVICES = [
 
 const PHONE_DISPLAY = "(909) 525-2525";
 const PHONE_HREF = "tel:+19095252525";
+const BOOKING_URL =
+  "https://www.patientviewer.com/WebSched/25_3_44/GWT/WebSched/WebSched.html?V=32355F335F3434&I=31302E31302E31312E313638&P=3530303039&R=3130303030&S=3130303030&T=3930303030&N=3439343938&K=3135333739&C=6538&UP=1&CID=30&RSC=406";
 const EMAIL = "dentalmatrixchinohills@gmail.com";
 const ADDRESS_LINE1 = "13850 City Center Drive, Suite 5000";
 const ADDRESS_LINE2 = "Chino Hills, CA 91709";
@@ -98,7 +100,9 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="#contact"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-deep"
             >
               Book Appointment
@@ -390,7 +394,9 @@ function Contact() {
               Drive off Grand Ave.
             </p>
             <a
-              href="#contact"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-8 inline-block rounded-full bg-green px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-deep"
             >
               Book Appointment

@@ -8,6 +8,9 @@ const NAV_LINKS = [
   { label: "Contact", href: "/#contact" },
 ];
 
+const BOOKING_URL =
+  "https://www.patientviewer.com/WebSched/25_3_44/GWT/WebSched/WebSched.html?V=32355F335F3434&I=31302E31302E31312E313638&P=3530303039&R=3130303030&S=3130303030&T=3930303030&N=3439343938&K=3135333739&C=6538&UP=1&CID=30&RSC=406";
+
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
@@ -59,12 +62,14 @@ export default function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/#contact"
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-deep"
         >
           Book Appointment
-        </Link>
+        </a>
       </div>
     </header>
   );
