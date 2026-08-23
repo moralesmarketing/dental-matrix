@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import SiteHeader from "../../components/site-header";
 import { SERVICES, getServiceBySlug } from "../data";
 
 const PHONE_DISPLAY = "(909) 525-2525";
@@ -35,25 +36,13 @@ export default async function ServicePage({
 
   return (
     <div className="flex flex-col flex-1">
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="font-serif text-xl font-semibold text-navy">
-            Dental Matrix
-          </Link>
-          <Link
-            href="/#contact"
-            className="rounded-full bg-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-deep"
-          >
-            Book Appointment
-          </Link>
-        </div>
-      </header>
+      <SiteHeader />
 
       <main className="flex-1">
         <section className="bg-linear-to-br from-navy to-navy-deep text-white">
           <div className="mx-auto max-w-4xl px-6 py-16">
             <Link
-              href="/#services"
+              href="/services"
               className="text-sm font-semibold text-white/60 hover:text-white"
             >
               ← All services

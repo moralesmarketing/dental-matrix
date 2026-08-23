@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteHeader from "./components/site-header";
 import { GROUPS, servicesByGroup } from "./services/data";
 
 const EXTRA_SERVICES = [
@@ -15,14 +16,6 @@ const PHONE_HREF = "tel:+19095252525";
 const EMAIL = "dentalmatrixchinohills@gmail.com";
 const ADDRESS_LINE1 = "13850 City Center Drive, Suite 5000";
 const ADDRESS_LINE2 = "Chino Hills, CA 91709";
-
-const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "Meet Dr. Yu", href: "#about" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "New Patients", href: "#new-patients" },
-  { label: "Contact", href: "#contact" },
-];
 
 const FEATURE_CARDS = [
   {
@@ -83,31 +76,6 @@ export default function Home() {
       </main>
       <Footer />
     </div>
-  );
-}
-
-function SiteHeader() {
-  return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#" className="font-serif text-xl font-semibold text-navy">
-          Dental Matrix
-        </a>
-        <nav className="hidden gap-8 text-sm font-medium text-navy/80 md:flex">
-          {NAV_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-navy">
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <a
-          href="#contact"
-          className="rounded-full bg-green px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-deep"
-        >
-          Book Appointment
-        </a>
-      </div>
-    </header>
   );
 }
 
