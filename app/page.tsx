@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const PHONE_DISPLAY = "(909) 525-2525";
 const PHONE_HREF = "tel:+19095252525";
 const EMAIL = "dentalmatrixchinohills@gmail.com";
@@ -229,28 +231,44 @@ function Hero() {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          <PlaceholderTile label="Reception" className="col-span-2 h-40" />
-          <PlaceholderTile label="Waiting area" className="h-48" />
-          <PlaceholderTile label="Treatment room" className="h-48" />
-          <PlaceholderTile label="Dr. Quinn Yu" className="col-span-2 h-40" />
+          <PhotoTile
+            src="/images/reception-desk.jpg"
+            alt="Dental Matrix reception desk"
+            className="col-span-2 h-40"
+          />
+          <PhotoTile
+            src="/images/waiting-area-chairs.jpg"
+            alt="Dental Matrix waiting area"
+            className="h-48"
+          />
+          <PhotoTile
+            src="/images/treatment-room-monitor.jpg"
+            alt="Dental Matrix treatment room"
+            className="h-48"
+          />
+          <PhotoTile
+            src="/images/waiting-area-tv.jpg"
+            alt="Dental Matrix office"
+            className="col-span-2 h-40"
+          />
         </div>
       </div>
     </section>
   );
 }
 
-function PlaceholderTile({
-  label,
+function PhotoTile({
+  src,
+  alt,
   className = "",
 }: {
-  label: string;
+  src: string;
+  alt: string;
   className?: string;
 }) {
   return (
-    <div
-      className={`flex items-center justify-center rounded-2xl border border-white/20 bg-white/5 text-center text-xs font-medium text-white/50 ${className}`}
-    >
-      Photo: {label}
+    <div className={`relative overflow-hidden rounded-2xl ${className}`}>
+      <Image src={src} alt={alt} fill sizes="50vw" className="object-cover" />
     </div>
   );
 }
@@ -338,7 +356,11 @@ function About() {
   return (
     <section id="about" className="bg-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[280px_1fr] md:items-start">
-        <PlaceholderTile label="Dr. Quinn Yu headshot" className="h-72" />
+        <PhotoTile
+          src="/images/dr-quinn-yu-headshot.jpg"
+          alt="Dr. Quinn Yu, DDS"
+          className="h-72"
+        />
         <div>
           <p className="text-sm font-semibold uppercase tracking-widest text-green-deep">
             Meet the Doctor
