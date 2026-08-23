@@ -1,4 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
+import { GROUPS, servicesByGroup } from "./services/data";
+
+const EXTRA_SERVICES = [
+  {
+    group: "Whole-Body Wellness",
+    name: "Tongue-Tie Release",
+    body: "Treatment to release restrictive tongue-tie for improved function.",
+  },
+];
 
 const PHONE_DISPLAY = "(909) 525-2525";
 const PHONE_HREF = "tel:+19095252525";
@@ -32,85 +42,6 @@ const FEATURE_CARDS = [
     body: "Financing available through DentalPlans.com, plus AETNA PPO accepted. Ask us what fits your plan.",
     href: "#new-patients",
     linkLabel: "New patient info",
-  },
-];
-
-const SERVICE_GROUPS = [
-  {
-    title: "Family & General Dentistry",
-    services: [
-      {
-        name: "Exams & Cleanings",
-        body: "Routine preventive care to catch concerns early and keep your whole family's smiles healthy.",
-      },
-      {
-        name: "Dental Fillings",
-        body: "Comfortable, tooth-colored restorations for cavities.",
-      },
-      {
-        name: "Dental Crowns",
-        body: "Durable crown restorations to protect and rebuild damaged teeth.",
-      },
-      {
-        name: "General & Family Dentistry",
-        body: "Everyday dental care for patients of every age, all under one roof.",
-      },
-    ],
-  },
-  {
-    title: "Cosmetic & Orthodontics",
-    services: [
-      {
-        name: "Cosmetic Dentistry",
-        body: "Aesthetic procedures designed to help your smile look and feel its best.",
-      },
-      {
-        name: "Teeth Whitening",
-        body: "Professional whitening treatments for a brighter smile.",
-      },
-      {
-        name: "Orthodontics",
-        body: "Teeth-straightening options tailored to your bite and goals.",
-      },
-      {
-        name: "ClearCorrect Aligners",
-        body: "Clear aligner therapy for a discreet, comfortable path to a straighter smile.",
-      },
-    ],
-  },
-  {
-    title: "Restorative Care",
-    services: [
-      {
-        name: "Dental Implants",
-        body: "Long-term tooth replacement, planned with 3D imaging for precision.",
-      },
-      {
-        name: "Root Canals",
-        body: "Endodontic treatment to save infected or damaged teeth.",
-      },
-    ],
-  },
-  {
-    title: "Whole-Body Wellness",
-    services: [
-      {
-        name: "Sleep Apnea Treatment (Vivos)",
-        body: "Vivos sleep appliances to help improve airway health and obstructive sleep apnea.",
-      },
-      {
-        name: "Evoke Facial Remodeling",
-        body: "A hands-free, pain-free radiofrequency treatment for facial and chin contouring — no surgery required.",
-      },
-      {
-        name: "Craniofacial Development",
-        body: "Development-focused treatment supporting healthy airway and jaw growth.",
-      },
-      {
-        name: "Tongue-Tie Release",
-        body: "Treatment to release restrictive tongue-tie for improved function.",
-      },
-    ],
   },
 ];
 
@@ -326,23 +257,42 @@ function Services() {
           Comprehensive care, one practice.
         </h2>
         <div className="mt-12 grid gap-10 md:grid-cols-2">
-          {SERVICE_GROUPS.map((group) => (
-            <div key={group.title}>
+          {GROUPS.map((group) => (
+            <div key={group}>
               <h3 className="font-serif text-xl font-semibold text-navy">
-                {group.title}
+                {group}
               </h3>
               <div className="mt-4 space-y-4">
-                {group.services.map((service) => (
-                  <div
-                    key={service.name}
-                    className="rounded-xl bg-white p-5 ring-1 ring-black/5"
+                {servicesByGroup(group).map((service) => (
+                  <Link
+                    key={service.slug}
+                    href={`/services/${service.slug}`}
+                    className="block rounded-xl bg-white p-5 ring-1 ring-black/5 transition-colors hover:ring-green"
                   >
                     <p className="font-semibold text-navy">{service.name}</p>
                     <p className="mt-1 text-sm text-foreground/70">
-                      {service.body}
+                      {service.shortBody}
                     </p>
-                  </div>
+                    <span className="mt-2 inline-block text-sm font-semibold text-green-deep">
+                      Learn more →
+                    </span>
+                  </Link>
                 ))}
+                {EXTRA_SERVICES.filter((s) => s.group === group).map(
+                  (service) => (
+                    <div
+                      key={service.name}
+                      className="rounded-xl bg-white p-5 ring-1 ring-black/5"
+                    >
+                      <p className="font-semibold text-navy">
+                        {service.name}
+                      </p>
+                      <p className="mt-1 text-sm text-foreground/70">
+                        {service.body}
+                      </p>
+                    </div>
+                  ),
+                )}
               </div>
             </div>
           ))}
