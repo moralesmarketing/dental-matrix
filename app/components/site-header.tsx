@@ -15,7 +15,7 @@ export default function SiteHeader() {
         <Link href="/" className="font-serif text-xl font-semibold text-navy">
           Dental Matrix
         </Link>
-        <nav className="hidden gap-8 text-sm font-medium text-navy/80 md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-navy/80 md:flex">
           <div className="group relative">
             <Link
               href="/services"
