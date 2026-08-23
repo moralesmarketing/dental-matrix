@@ -81,6 +81,20 @@ export default function Home() {
   );
 }
 
+const MARQUEE_COLUMN_LEFT = [
+  { src: "/images/reception-desk.jpg", alt: "Dental Matrix reception desk" },
+  { src: "/images/treatment-room-monitor.jpg", alt: "Dental Matrix treatment room" },
+  { src: "/images/waiting-area-chairs.jpg", alt: "Dental Matrix waiting area" },
+  { src: "/images/treatment-room-suite.jpg", alt: "Dental Matrix treatment suite" },
+];
+
+const MARQUEE_COLUMN_RIGHT = [
+  { src: "/images/waiting-area-tv.jpg", alt: "Dental Matrix office" },
+  { src: "/images/treatment-room-evoke.jpg", alt: "Dental Matrix Evoke treatment room" },
+  { src: "/images/waiting-area-entrance.jpg", alt: "Dental Matrix entrance and waiting area" },
+  { src: "/images/treatment-room-sink.jpg", alt: "Dental Matrix treatment room" },
+];
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-linear-to-br from-navy to-navy-deep text-white">
@@ -133,30 +147,47 @@ function Hero() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
-          <PhotoTile
-            src="/images/reception-desk.jpg"
-            alt="Dental Matrix reception desk"
-            className="col-span-2 h-40"
-          />
-          <PhotoTile
-            src="/images/waiting-area-chairs.jpg"
-            alt="Dental Matrix waiting area"
-            className="h-48"
-          />
-          <PhotoTile
-            src="/images/treatment-room-monitor.jpg"
-            alt="Dental Matrix treatment room"
-            className="h-48"
-          />
-          <PhotoTile
-            src="/images/waiting-area-tv.jpg"
-            alt="Dental Matrix office"
-            className="col-span-2 h-40"
-          />
+        <div className="relative h-[380px] overflow-hidden rounded-2xl sm:h-[460px] md:h-[560px] lg:h-[640px]">
+          <div className="grid h-full grid-cols-2 gap-4">
+            <PhotoColumn images={MARQUEE_COLUMN_LEFT} direction="up" />
+            <PhotoColumn images={MARQUEE_COLUMN_RIGHT} direction="down" />
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function PhotoColumn({
+  images,
+  direction,
+}: {
+  images: { src: string; alt: string }[];
+  direction: "up" | "down";
+}) {
+  return (
+    <div className="relative h-full overflow-hidden">
+      <div
+        className={`flex flex-col gap-4 ${
+          direction === "up" ? "animate-scroll-up" : "animate-scroll-down"
+        }`}
+      >
+        {[...images, ...images].map((image, i) => (
+          <div
+            key={i}
+            className="relative h-56 w-full shrink-0 overflow-hidden rounded-2xl"
+          >
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="25vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
